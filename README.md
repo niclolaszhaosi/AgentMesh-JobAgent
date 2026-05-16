@@ -409,6 +409,25 @@ Nothing of the above is required to receive a key. M1 is free; we just want sign
 
 ---
 
+## Privacy & Data
+
+- **简历文件**：始终保留在本机，不上传至任何云服务
+- **Cookie**：Boss 直聘登录态仅在本机 Chrome 中使用，不离开本机
+- **AI 处理**：简历提取文本和岗位信息通过加密通道发送至云端，由 **DeepSeek** 进行 AI 分析（匹配评分、招呼语生成）。数据按 [DeepSeek 隐私政策](https://www.deepseek.com/privacy) 处理
+- **服务端日志**：仅记录 API 调用时间、接口名和 Token 用量，不记录简历内容
+- **数据删除**：如需删除使用记录，请发邮件至 niclolaszhaosi@gmail.com
+
+## Terms & Disclaimer
+
+Job Agent 是独立第三方工具，与 Boss 直聘无合作关系。
+
+- **服务边界**：当前仅支持 macOS + Chrome + Boss 直聘，处于 Early Access 阶段，功能仍在迭代
+- **平台风险**：我们不承诺规避平台规则，账号被限制或封禁的风险由用户自行承担
+- **用户责任**：发送前请自行审核每条消息内容；禁止用于骚扰式海投
+- **免责声明**：不保证获得回复、面试或录用；对账号损失、数据丢失等不承担责任；产品按"现状"提供
+
+完整服务条款：[docs/marketing/reports/tos-disclaimer-minimum.md](docs/marketing/reports/tos-disclaimer-minimum.md)
+
 ## License
 
 MIT
