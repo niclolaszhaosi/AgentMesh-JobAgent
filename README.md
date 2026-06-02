@@ -415,7 +415,7 @@ Nothing of the above is required to receive a key. M1 is free; we just want sign
 - **Cookie**：Boss 直聘登录态仅在本机 Chrome 中使用，不离开本机
 - **AI 处理**：简历提取文本和岗位信息通过加密通道发送至云端，由 **DeepSeek** 进行 AI 分析（匹配评分、招呼语生成）。数据按 [DeepSeek 隐私政策](https://www.deepseek.com/privacy) 处理
 - **服务端日志**：仅记录 API 调用时间、接口名和 Token 用量，不记录简历内容
-- **数据删除**：如需删除使用记录，请发邮件至 niclolaszhaosi@gmail.com
+- **数据删除**：如需删除使用记录，请发邮件至 hello@agentmesh360.com
 
 ## Terms & Disclaimer
 
