@@ -1,7 +1,7 @@
 ---
 name: job-agent
 description: Use when the user wants help finding jobs on Boss直聘/Zhipin, analyzing a resume for job search, ranking Boss job listings, drafting personalized recruiter greetings, sending confirmed greetings, or auditing past Job Agent sends.
-version: 0.1.0
+version: 0.1.1
 metadata:
   openclaw:
     emoji: "💼"
