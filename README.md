@@ -459,4 +459,4 @@ Job Agent 是独立第三方工具，与 Boss 直聘无合作关系。
 
 ## License
 
-MIT
+Apache License 2.0 — see [LICENSE](LICENSE) for details.
