@@ -3,7 +3,7 @@
 
 > 🟣 Part of **[AgentMesh](https://github.com/jiyangnan/agentmesh-core)** — see the [ecosystem index](https://github.com/jiyangnan/agentmesh-core/blob/main/docs/ECOSYSTEM.md) ([中文](https://github.com/jiyangnan/agentmesh-core/blob/main/docs/ECOSYSTEM.zh.md)) for all related repos, the [roadmap](https://github.com/jiyangnan/agentmesh-core/blob/main/docs/ROADMAP.md), and [architecture](https://github.com/jiyangnan/agentmesh-core/blob/main/docs/ARCHITECTURE.md).
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-early%20access-orange.svg)](#status)
+[![Status](https://img.shields.io/badge/status-open%20beta-orange.svg)](#status)
 [![Brand](https://img.shields.io/badge/brand-AgentMesh-6E4AFF.svg)](https://github.com/jiyangnan/agentmesh-core)
 
 > AI-driven job hunting automation for Boss直聘 (Zhipin), 猎聘 (Liepin), and 智联招聘 (Zhilian) — built to be controlled by your AI agent (Claude Code, OpenClaw, etc.) from chat.
@@ -14,15 +14,15 @@
 
 This is part of the [**AgentMesh**](https://github.com/jiyangnan/agentmesh-core) ecosystem — a series of vertical AI agents for specific industries.
 
-> **⚠️ Early access**. Cloud features require a license key (request from the maintainer). The public release is intentionally low-key while we collect early feedback.
+> **⚠️ Open beta**. Cloud features require an AgentMesh360 account API key — register at [agentmesh360.com/app](https://agentmesh360.com/app/), grab your API key from the account dashboard, and run `jobagent init --key <your_api_key>`. Everything is **free during open beta** while we collect early feedback.
 
 ---
 
 ## Architecture — client plus Cloud API
 
-You're looking at the public client repo. It contains local browser automation, PDF/DOCX parsing, platform-specific CLI commands, audit files, and agent-friendly onboarding. Cloud AI features call `api.jobagent.agentmesh360.com` with your configured license key.
+You're looking at the public client repo. It contains local browser automation, PDF/DOCX parsing, platform-specific CLI commands, audit files, and agent-friendly onboarding. Cloud AI features call `api.jobagent.agentmesh360.com` with your configured AgentMesh360 API key.
 
-You do not need access to any private server code. The Cloud API endpoint and a license key are enough to use the public CLI.
+You do not need access to any private server code. The Cloud API endpoint and an AgentMesh360 account API key are enough to use the public CLI.
 
 ---
 
@@ -79,13 +79,13 @@ pip install -e ".[dev]"
 
 ---
 
-## 🎁 Free vs License
+## 🎁 本地工具 vs 云端 AI
 
-CLI 本体永远免费 —— 抓岗位、管简历文件、自动化登录这些"agent 自己干不了"的事都给你。AI 那一段（简历理解、岗位匹配、招呼语）走云端，需要 license（M1 阶段免费申请，几小时内回）。
+CLI 本体永远免费 —— 抓岗位、管简历文件、自动化登录这些"agent 自己干不了"的事都给你。AI 那一段（简历理解、岗位匹配、招呼语）走云端，需要注册 AgentMesh360 账户并配置 API key（当前免费开放，几分钟搞定）。
 
-| | **Free** · 本地工具版 | **License** · 完整云端 AI 版 |
+| | **本地工具版** | **完整云端 AI 版** |
 |---|---|---|
-|  | `git clone` 直接跑 | M1 阶段[免费申请](https://jobagent.agentmesh360.com/#apply) |
+|  | `git clone` 直接跑 | [注册 AgentMesh360 账户](https://agentmesh360.com/app/) → 取 API key |
 | 简历文本提取（PDF/DOCX → text） | ✅ | ✅ |
 | Boss 岗位抓取（多页） | ✅ | ✅ |
 | 独立 Chrome 自动化登录（cookie 留本地） | ✅ | ✅ |
@@ -96,11 +96,11 @@ CLI 本体永远免费 —— 抓岗位、管简历文件、自动化登录这�
 | **AI 个性化招呼语（≤150 字 + 量化成果）** | ❌ | ✅ |
 | **批量发送 + 送达验证** | ❌ | ✅ |
 | **云端算法持续迭代**（无需更新客户端） | ❌ | ✅ |
-| **未来产品免费试用**（AgentMesh 矩阵） | ❌ | ✅ |
+| **AgentMesh 矩阵其它产品**（共享 credit 池） | ❌ | ✅ |
 
-> 受 license 保护的命令：`jobagent resume analyze` · `jobagent boss rank` · `jobagent boss greet preview` · `jobagent boss greet send` · `jobagent pipeline run`。运行前会自动检查 license，没有就会停下来给你引导申请。
+> 需要账户的命令：`jobagent resume analyze` · `jobagent boss rank` · `jobagent boss greet preview` · `jobagent boss greet send` · `jobagent pipeline run`。运行前会自动检查 API key，没有就会停下来引导你去注册。
 >
-> Free 版可直接用：`jobagent resume extract`、`jobagent profile save/show/edit`、`jobagent boss collect`、`jobagent login`、`jobagent doctor`、`jobagent init`、`jobagent support star`、`jobagent boss greet audit`。
+> 无需账户即可直接用：`jobagent resume extract`、`jobagent profile save/show/edit`、`jobagent boss collect`、`jobagent login`、`jobagent doctor`、`jobagent init`、`jobagent support star`、`jobagent boss greet audit`。
 
 ---
 
@@ -158,23 +158,21 @@ If you're a developer integrating with this product programmatically, the Claude
 >
 > | Setup | Recommended path |
 > |---|---|
-> | You have a Cloud API license key (or can request one — currently free during M1) | **Path A: Cloud-driven** (below). Best matches, best greetings, recruiter-perspective 36-field profile. |
-> | You can't get a license today / want to evaluate first | Path B: Pure-local (below). Works, but rule-based matching and template greetings — much weaker than cloud. |
+> | You have an AgentMesh360 account API key (or can register for one — free during open beta) | **Path A: Cloud-driven** (below). Best matches, best greetings, recruiter-perspective 36-field profile. |
+> | You haven't registered yet / want to evaluate first | Path B: Pure-local (below). Works, but rule-based matching and template greetings — much weaker than cloud. |
 > | You're a power user editing YAML configs by hand | Path C: Manual config (further below). |
 >
-> Requesting a license is fast and free during M1 — pick whichever channel fits:
+> Getting an API key is fast and free during open beta:
 >
-> - **Application form**: [Apply here](https://jobagent.agentmesh360.com/#apply) — 30-second structured form. Recommended.
-> - **GitHub issue**: [open a license-request issue](https://github.com/jiyangnan/AgentMesh-JobAgent/issues/new?template=license-request.yml) (public by default).
-> - **Email**: `hello@agentmesh360.com`.
->
-> All three reach the same queue; usually replied within a few hours.
+> 1. Register an AgentMesh360 account at [agentmesh360.com/app](https://agentmesh360.com/app/).
+> 2. Open the account dashboard and copy your API key.
+> 3. Run `jobagent init --key <your_api_key>`.
 
 ### Path A: Cloud-driven (recommended — uses Job Agent Cloud API)
 
 ```bash
-# 1. One-time setup with your license key
-jobagent init --key jba_live_xxxxxx
+# 1. One-time setup with your AgentMesh360 API key
+jobagent init --key <your_api_key>
 # Verifies connectivity, saves key to ~/.jobagent/credentials (mode 600)
 
 # 2. Analyze resume (local extract → Cloud /v1/resume/analyze → save 36-field profile)
@@ -210,14 +208,14 @@ The Cloud API endpoint is `https://api.jobagent.agentmesh360.com` (override with
 resume original file always stay on your machine — only stripped text /
 structured profile is sent to the cloud. See the Privacy & Data section below for the data boundary.
 
-### Path B: Free-tier commands (no license)
+### Path B: Local-only commands (no account)
 
-Without a license you can still use the Free-tier commands as standalone tools — useful for evaluating the product locally before applying:
+Without an AgentMesh360 account you can still use the local-only commands as standalone tools — useful for evaluating the product locally before registering:
 
 ```bash
-# Extract resume text (PDF/DOCX/TXT → text); useful even without a license
+# Extract resume text (PDF/DOCX/TXT → text); useful even without an account
 jobagent resume extract --file resume.pdf
-# stderr prints a hint about the License version's upgrades
+# stderr prints a hint about the cloud AI version's upgrades
 
 # Manage the profile JSON by hand (e.g. your own agent's LLM fills it)
 jobagent profile save --data '{"basic":{...},"hardSkills":{...},...}'
@@ -230,11 +228,11 @@ jobagent boss collect --city 深圳 --query "AI产品经理" --output raw.json
 # Sanity-check the local environment
 jobagent doctor env
 
-# Read past send history (still works after license expiry)
+# Read past send history (works regardless of account status)
 jobagent boss greet audit
 ```
 
-**`jobagent boss rank`, `jobagent boss greet preview`, `jobagent boss greet send`, `jobagent resume analyze`, `jobagent pipeline run` all require a license** — they call the Cloud API and will exit with a friendly prompt if no license is configured. [Apply for one here](https://jobagent.agentmesh360.com/#apply); M1 stage is free.
+**`jobagent boss rank`, `jobagent boss greet preview`, `jobagent boss greet send`, `jobagent resume analyze`, `jobagent pipeline run` all require an AgentMesh360 account API key** — they call the Cloud API and will exit with a friendly prompt if no key is configured. [Register an account](https://agentmesh360.com/app/), grab your API key from the dashboard, then run `jobagent init --key <your_api_key>`; free during open beta.
 
 ---
 
@@ -412,29 +410,32 @@ pip install -e ".[dev]"
 
 ---
 
-## Contact / Request a License
+## Account & API Key
 
-M1 license keys are free — we hand them out so we can track who's evaluating the product and collect feedback. Three ways to apply, pick whichever fits:
+Cloud AI features run on your AgentMesh360 account. It's **free during open beta** — no payment required to get started.
 
-### Option 1 — Application form (recommended)
+### How to get your API key
 
-[**Apply here (Tally form)**](https://jobagent.agentmesh360.com/#apply) — 30-second structured form, no GitHub account required. Goes to our queue; usually replied within a few hours via email.
+1. **Register** an AgentMesh360 account at [agentmesh360.com/app](https://agentmesh360.com/app/).
+2. Open the **account dashboard** and copy your **API key**.
+3. Run `jobagent init --key <your_api_key>` — it verifies connectivity and saves the key to `~/.jobagent/credentials` (mode 600).
 
-### Option 2 — GitHub Issue
+### Pricing (subscriptions coming soon — everything is free during open beta)
 
-[Open a license-request issue](https://github.com/jiyangnan/AgentMesh-JobAgent/issues/new?template=license-request.yml) — the template will collect what we need. Responses go back on the issue thread, so this option is **public** by default; choose Option 1 or 3 if you'd rather not have your request indexed.
+Subscription tiers are on the way. Credits are pooled across the AgentMesh product matrix, so one balance powers Job Agent and other AgentMesh products. **For now, all tiers are free during open beta — no card needed.**
 
-### Option 3 — Email
+| Tier | Price | Credits |
+|---|---|---|
+| Free | one-time grant | 50 |
+| Pro | $9.9 / mo | 1,500 / mo |
+| Creator | $19 / mo | 3,500 / mo |
+| Team | $39 / mo | 8,000 / mo |
 
-`hello@agentmesh360.com` — write a short note about what you're hunting and how you found us. We'll reply with a key.
+When subscriptions go live, billing will run through official payment channels — details will be announced in the account dashboard.
 
-### What we look at
+### Need help?
 
-- Real-job-hunt use vs evaluation
-- Which host agent you'd use (Claude Code / OpenClaw / Cursor / Codex / …)
-- Where you heard about us
-
-Nothing of the above is required to receive a key. M1 is free; we just want signal on who is reaching the product.
+Email `hello@agentmesh360.com` with a short note about what you're hunting and how you found us.
 
 ---
 
@@ -450,7 +451,7 @@ Nothing of the above is required to receive a key. M1 is free; we just want sign
 
 Job Agent 是独立第三方工具，与 Boss 直聘无合作关系。
 
-- **服务边界**：当前公开 CLI 支持 Boss 直聘稳定链路，并提供猎聘、智联招聘 beta 链路；处于 Early Access 阶段，功能仍在迭代
+- **服务边界**：当前公开 CLI 支持 Boss 直聘稳定链路，并提供猎聘、智联招聘 beta 链路；处于免费开放期（open beta），功能仍在迭代
 - **平台风险**：我们不承诺规避平台规则，账号被限制或封禁的风险由用户自行承担
 - **用户责任**：发送前请自行审核每条消息内容；禁止用于骚扰式海投
 - **免责声明**：不保证获得回复、面试或录用；对账号损失、数据丢失等不承担责任；产品按"现状"提供
